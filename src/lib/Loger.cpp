@@ -1,6 +1,8 @@
 #include "../include/Loger.h"
 #include <iostream>
 
+using namespace dl;
+
 std::string IOutputer::TypeLogName[] =
 {
 	"empty log",
@@ -56,6 +58,7 @@ void Loger::process()
 	{
 		if (log.isException) throw log.typeLog;
 	}
+	this->logs.clear();
 }
 
 void Loger::process(IOutputer& otp)
@@ -65,6 +68,7 @@ void Loger::process(IOutputer& otp)
 		otp.output(log);
 		if (log.isException) throw log.typeLog;
 	}
+	this->logs.clear();
 }
 
 void Loger::process(std::string messg, TypeLog tpLog, bool isEx)
